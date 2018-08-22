@@ -1,0 +1,98 @@
+﻿@model HealthRecord.Data.Entities.Creation
+@using HealthRecord.Data.Entities
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<div class="row">
+    @Html.Action("DisplayMenu")
+    <div class="col-9">
+        @if (Model != null)
+        {
+        <div class="info-section">
+            <div class="row">
+                <div class="h3"><i class="far fa-id-card"></i> Basic info</div>
+                <a id="editMemberBtn" href="@Url.Action("EditMember", "Profile", new { id = Model.Id })"><i class="fas fa-pencil-alt pencil-white"></i></a>
+            </div>
+            <div class="basics-container">
+                <div class="row space-between">
+                    <strong>Name:</strong> <span id="basics-name">@Model.Name</span>
+                    <strong>Date of birth:</strong> <span id="basics-birth">@Model.DateOfBirth.ToString("dd.MM.yyyy")</span>
+                </div>
+                <div class="row space-between">
+                    <strong>Sex:</strong> <span id="basics-sex">@Model.Sex</span>
+                    <strong>Weight:</strong> <span id="basics-weight">@Model.Weight</span>
+                </div>
+            </div>
+        </div>
+            if (Model is Animal animal)
+            {
+            <div class="info-section">
+                <div class="row">
+                    @Html.ActionLink("+", "AddChip", "Profile", new { id = Model.Id }, htmlAttributes: new { @class = "link" })
+                    <div class="h3"><i class="fas fa-passport"></i> Chips</div>
+                </div>
+                @if (animal.Chips != null)
+                {
+                    foreach (var chip in animal.Chips)
+                    {
+                    <div class="info-container">
+                        <a id="editChipBtn" href="@Url.Action("EditChip", "Profile", new { id = chip.Id, creationId = Model.Id })"><i class="fas fa-pencil-alt pencil-dark"></i></a>
+                        <div class="row space-between">
+                            <div><strong>Name:</strong> <span id="chip-name-@chip.Id">@chip.Name</span></div>
+                            <span id="chip-number-@chip.Id">@chip.ChipDate</span></div>
+                        <div class="row"><strong>Number:</strong> <span id="chip-number-@chip.Id">@chip.Number</span></div>
+                    </div>
+                    }
+                }
+            </div>
+            }
+        <div class="info-section">
+            <div class="row">
+                @Html.ActionLink("+", "AddVaccine", "Profile", new { id = Model.Id }, htmlAttributes: new { @class = "link" })
+                <div class="h3"><i class="fas fa-syringe"></i> Vaccinations</div>
+            </div>
+            @if (Model.Vaccines != null)
+            {
+                foreach (var vaccine in Model.Vaccines)
+                {
+                <div class="info-container">
+                    <a id="editVaccineBtn" href="@Url.Action("EditVaccine", "Profile", new { id = vaccine.Id, creationId = Model.Id })"><i class="fas fa-pencil-alt pencil-dark"></i></a>
+                    <div class="row space-between">
+                        <div><strong>Name:</strong> <span id="vaccine-name-@vaccine.Id">@vaccine.Name</span></div>
+                        <div><span id="vaccine-date-@vaccine.Id">@vaccine.DateOfVaccination.ToString("dd.MM.yyyy")</span></div>
+                    </div>
+                    <div><strong>No:</strong> <span id="vaccine-serie-@vaccine.Id">@vaccine.Serie</span></div>
+                </div>
+                }
+            }
+        </div>
+        <div class="info-section">
+            <div class="row">
+                @Html.ActionLink("+", "AddMedicalRecord", "Profile", new { id = Model.Id }, htmlAttributes: new { @class = "link" })
+                <div class="h3"><i class="fas fa-heartbeat"></i> Medical history</div>
+            </div>
+            @if (Model.MedicalHistory != null)
+            {
+                foreach (var record in Model.MedicalHistory)
+                {
+                <div class="info-container">
+                    <a id="editRecordBtn" href="@Url.Action("EditMedicalRecord", "Profile", new { id = record.Id, creationId = Model.Id })"><i class="fas fa-pencil-alt pencil-dark"></i></a>
+                    <div class="row space-between">
+                        <div><strong>Name:</strong> <span id="record-name-@record.Id">@record.Name</span></div>
+                        <div><span id="record-date-@record.Id">@record.DateOfEvent.ToString("dd.MM.yyyy")</span></div>
+                    </div>
+                    <div><strong>Type:</strong> <span id="record-type-@record.Id">@record.RecordType</span></div>
+                    <div><strong>Description:</strong> <span id="record-description-@record.Id">@record.Description</span></div>
+                </div>
+                }
+            }
+        </div>
+        }
+        else
+        {
+        <div class="h3">Wrong data</div>
+        }
+    </div>
+</div>

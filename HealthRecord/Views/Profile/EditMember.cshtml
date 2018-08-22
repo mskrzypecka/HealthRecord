@@ -1,0 +1,65 @@
+﻿@model HealthRecord.Data.Entities.Creation
+
+@{
+    ViewBag.Title = "EditMember";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="center col-4">
+    <div class="h3">Creation</div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="info-section">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "" })
+        <div id="editMemberName" class="info-container">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="info-section">
+        @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "" })
+        <div id="editMemberSex" class="info-container">
+            @Html.EnumDropDownListFor(model => model.Sex, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="info-section">
+        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "" })
+        <div id="editMemberBirth" class="info-container">
+            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="info-section">
+        @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "" })
+        <div id="editMemberWeight" class="info-container">
+            @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="info-section">
+        @Html.LabelFor(model => model.ImageLink, htmlAttributes: new { @class = "" })
+        <div id="editMemberImageLink" class="info-container">
+            @Html.EditorFor(model => model.ImageLink, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.ImageLink, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <input id="editMemberSubmit" type="submit" value="Save" class="btn" />
+</div>
+}
+
+<div class="center">
+    @Html.ActionLink("Back to List", "Index", "Profile", null, htmlAttributes: new { @class = "link-dark" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

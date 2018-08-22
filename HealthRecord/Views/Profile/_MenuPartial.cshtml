@@ -1,0 +1,44 @@
+﻿@model IEnumerable<IGrouping<HealthRecord.Data.Entities.MemberType, HealthRecord.Data.Entities.Creation>>
+
+@{
+    var id = Url.RequestContext.RouteData.Values["id"]?.ToString() ?? string.Empty;
+}
+
+<div class="menu col-3">
+    @if (Model != null)
+    {
+        foreach (var group in Model)
+        {
+            foreach (var member in group)
+            {
+                <div>
+                    <button id="member-btn-@member.Id" class="btn btn-menu">
+                        @if (member.Id == id)
+                        {
+                            <div id="member-picture-@member.Id">
+                                <img src="@member.ImageLink" width="100" height="100" />
+                            </div>
+                        }
+                        @switch (member.MemberType)
+                        {
+                            case HealthRecord.Data.Entities.MemberType.Human:
+                                <i class="fas fa-user"></i>
+                                break;
+                            case HealthRecord.Data.Entities.MemberType.Pet:
+                                <i class="fas fa-paw"></i>
+                                break;
+                            case HealthRecord.Data.Entities.MemberType.FarmAnimal:
+                                <i class="fas fa-truck-monster"></i>
+                                break;
+                        }
+                        @Html.ActionLink(member.Name, "Index", "Profile", routeValues: new { Id = member.Id }, htmlAttributes: new { @class = "link" })
+                    </button>
+    
+                    </div>
+            }
+        }
+    }
+    <button id="addMember" class="btn btn-menu">
+        @Html.ActionLink("Add member +", "AddMember", "Profile", routeValues: null, htmlAttributes: new { @class = "link" })
+    </button>
+</div>

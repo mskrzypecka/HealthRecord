@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E034A35-FFC4-453D-9478-0381ACBF19F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HealthRecord.Data</RootNamespace>
+    <AssemblyName>HealthRecord.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Entities\Animal.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Chip.cs" />
+    <Compile Include="Entities\Creation.cs" />
+    <Compile Include="Entities\FarmAnimal.cs" />
+    <Compile Include="Entities\Human.cs" />
+    <Compile Include="Entities\MedicalHistoryRecord.cs" />
+    <Compile Include="Entities\PetAnimal.cs" />
+    <Compile Include="Entities\Vaccine.cs" />
+    <Compile Include="Migrations\201807300915149_Initial.cs" />
+    <Compile Include="Migrations\201807300915149_Initial.Designer.cs">
+      <DependentUpon>201807300915149_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808020902596_CreationMigration.cs" />
+    <Compile Include="Migrations\201808020902596_CreationMigration.Designer.cs">
+      <DependentUpon>201808020902596_CreationMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808030924570_UserCreationRelationMigration.cs" />
+    <Compile Include="Migrations\201808030924570_UserCreationRelationMigration.Designer.cs">
+      <DependentUpon>201808030924570_UserCreationRelationMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031210065_NameAddedToHuman.cs" />
+    <Compile Include="Migrations\201808031210065_NameAddedToHuman.Designer.cs">
+      <DependentUpon>201808031210065_NameAddedToHuman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031224177_NameTypeChangedToString.cs" />
+    <Compile Include="Migrations\201808031224177_NameTypeChangedToString.Designer.cs">
+      <DependentUpon>201808031224177_NameTypeChangedToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031303578_MedicalHistoryDateOfEvent.cs" />
+    <Compile Include="Migrations\201808031303578_MedicalHistoryDateOfEvent.Designer.cs">
+      <DependentUpon>201808031303578_MedicalHistoryDateOfEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031419171_MedicalHistoryTypoFixed.cs" />
+    <Compile Include="Migrations\201808031419171_MedicalHistoryTypoFixed.Designer.cs">
+      <DependentUpon>201808031419171_MedicalHistoryTypoFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808060916571_CreationNotAbstractAnymore.cs" />
+    <Compile Include="Migrations\201808060916571_CreationNotAbstractAnymore.Designer.cs">
+      <DependentUpon>201808060916571_CreationNotAbstractAnymore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808110756019_ImageLinkAdded.cs" />
+    <Compile Include="Migrations\201808110756019_ImageLinkAdded.Designer.cs">
+      <DependentUpon>201808110756019_ImageLinkAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807300915149_Initial.resx">
+      <DependentUpon>201807300915149_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808020902596_CreationMigration.resx">
+      <DependentUpon>201808020902596_CreationMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808030924570_UserCreationRelationMigration.resx">
+      <DependentUpon>201808030924570_UserCreationRelationMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031210065_NameAddedToHuman.resx">
+      <DependentUpon>201808031210065_NameAddedToHuman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031224177_NameTypeChangedToString.resx">
+      <DependentUpon>201808031224177_NameTypeChangedToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031303578_MedicalHistoryDateOfEvent.resx">
+      <DependentUpon>201808031303578_MedicalHistoryDateOfEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031419171_MedicalHistoryTypoFixed.resx">
+      <DependentUpon>201808031419171_MedicalHistoryTypoFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808060916571_CreationNotAbstractAnymore.resx">
+      <DependentUpon>201808060916571_CreationNotAbstractAnymore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808110756019_ImageLinkAdded.resx">
+      <DependentUpon>201808110756019_ImageLinkAdded.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
